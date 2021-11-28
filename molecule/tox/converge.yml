@@ -1,0 +1,17 @@
+---
+- name: ELK
+  hosts: elk
+  tasks:
+    - name: Get elk facts
+      setup:
+- name: KBN
+  hosts: kbn
+  tasks:
+    - name: Get kbn facts
+      setup:
+- name: Converge
+  hosts: fbt
+  tasks:
+    - name: "Include filebeat-role"
+      include_role:
+        name: "filebeat-role"

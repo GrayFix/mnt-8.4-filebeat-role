@@ -1,0 +1,11 @@
+---
+# This is an example playbook to execute Ansible tests.
+- name: Verify
+  hosts: fbt
+  gather_facts: false
+  tasks:
+  - name: Get stats of the FS object
+    wait_for:
+      path: /var/lib/filebeat/filebeat.lock
+      state: present
+      timeout: 60

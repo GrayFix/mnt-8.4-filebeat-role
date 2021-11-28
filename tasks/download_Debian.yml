@@ -3,7 +3,9 @@
   get_url:
     url: "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ filebeat_version }}-amd64.deb"
     dest: "files/filebeat-{{ filebeat_version }}-amd64.deb"
+  timeout: 900
   delegate_to: localhost
+  run_once: True
   register: download_filebeat
   until: download_filebeat is succeeded
   when: filebeat_install_type == 'remote'
